@@ -31,6 +31,10 @@ namespace WebApiDemo.Controllers
             try
             {
                 var response = _service.CalculateQuotes(request);
+
+                if (response.Quotes.Count == 0) {
+                    return Ok("No quote available");
+                }
                 return Ok(response);
             }
             catch (ArgumentException ex)
