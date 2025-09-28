@@ -17,14 +17,7 @@ Features Swagger UI for API exploration and comprehensive unit tests.
 #### Provider Topics
 
 Create or edit `Config/config.json` to define provider-topic mappings.  
-Example:
-{
-  "provider_topics": {
-    "provider_a": "math+science",
-    "provider_b": "reading+science",
-    "provider_c": "history+math"
-  }
-}
+
 #### App Settings
 
 Default `appsettings.json` is sufficient for development.
