@@ -45,6 +45,7 @@ Default `appsettings.json` is sufficient for development.
 
 ## Running Tests
 - To run tests using Visual Studio, open the Test Explorer and run all tests.
+- 
 ## Project Structure
 
 - `Controllers/` - API controllers
@@ -53,4 +54,4 @@ Default `appsettings.json` is sufficient for development.
 - `Middleware/` - Custom middleware (e.g., request/response logging)
 - `Config/config.json` - Provider/topic configuration
 - `WebApiDemo.Tests/` - Unit tests
-- `Logs/Log*.txt` - Logs from app execution
+- `Logs/Log*.txt` - Logs from app execution, example log files are included for reference, no .gitignore.
