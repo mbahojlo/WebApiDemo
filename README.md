@@ -37,14 +37,14 @@ Default `appsettings.json` is sufficient for development.
 
 `POST /api/demo/quotes`
 
-- Simple request body will pop up in swagger UI
+- Simple request body will pop up in Swagger UI
 
 ### Response
 
 - The response contains calculated quotes for each provider based on the submitted topic values and the configuration in `config.json`.
 
 ## Running Tests
-
+- To run tests using Visual Studio, open the Test Explorer and run all tests.
 ## Project Structure
 
 - `Controllers/` - API controllers
