@@ -1,9 +1,3 @@
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-using System.IO;
-using System.Text;
-using System.Threading.Tasks;
-
 public class RequestResponseLoggingMiddleware
 {
     private readonly RequestDelegate _next;
@@ -17,23 +11,27 @@ public class RequestResponseLoggingMiddleware
 
     public async Task Invoke(HttpContext context)
     {
-        // Log incoming request
+        //remove swagger to not litter logs
+        if (context.Request.Path.StartsWithSegments("/swagger"))
+        {
+            await _next(context);
+            return;
+        }
+
         context.Request.EnableBuffering();
         var requestBody = await new StreamReader(context.Request.Body).ReadToEndAsync();
-        context.Request.Body.Position = 0; // reset stream position
+        context.Request.Body.Position = 0; 
         _logger.LogInformation("Incoming Request: {Method} {Path} Payload: {Payload}",
             context.Request.Method, context.Request.Path, requestBody);
 
-        // Capture response
         var originalBodyStream = context.Response.Body;
         using var responseBody = new MemoryStream();
         context.Response.Body = responseBody;
 
         try
         {
-            await _next(context); // call the next middleware
-
-            // Log successful response
+            await _next(context); 
+        
             context.Response.Body.Seek(0, SeekOrigin.Begin);
             var responseText = await new StreamReader(context.Response.Body).ReadToEndAsync();
             context.Response.Body.Seek(0, SeekOrigin.Begin);

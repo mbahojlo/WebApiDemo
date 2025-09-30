@@ -29,8 +29,6 @@ Default `appsettings.json` is sufficient for development.
 - Open the solution in Visual Studio 2022.
 - Press **F5** or select __Debug > Start Debugging__.
 
-#### Using CLI
-
 ### 4. API Documentation
 
 ## API Usage
@@ -39,7 +37,7 @@ Default `appsettings.json` is sufficient for development.
 
 `POST /api/demo/quotes`
 
-### Request Body
+- Simple request body will pop up in swagger UI
 
 ### Response
 
@@ -55,3 +53,4 @@ Default `appsettings.json` is sufficient for development.
 - `Middleware/` - Custom middleware (e.g., request/response logging)
 - `Config/config.json` - Provider/topic configuration
 - `WebApiDemo.Tests/` - Unit tests
+- `Logs/Log*.txt` - Logs from app execution

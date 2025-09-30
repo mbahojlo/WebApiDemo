@@ -1,8 +1,7 @@
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
-using WebApiDemo.Models;
 using WebApiDemo.Services;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +15,13 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddSwaggerExamplesFromAssemblyOf<TopicsRequestExample>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSingleton<IQuoteService, QuoteService>();
+
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Information()         
+    .WriteTo.File("Logs/Log.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
+
+builder.Host.UseSerilog(); 
 var app = builder.Build();
 app.UseMiddleware<RequestResponseLoggingMiddleware>();
 

@@ -1,0 +1,27 @@
+2025-09-30 17:48:40.646 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5781/_vs/browserLink - null null
+2025-09-30 17:48:40.646 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5781/_framework/aspnetcore-browser-refresh.js - null null
+2025-09-30 17:48:40.724 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5781/_framework/aspnetcore-browser-refresh.js - 200 16505 application/javascript; charset=utf-8 86.9396ms
+2025-09-30 17:48:40.731 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-09-30 17:48:40.731 +02:00 [INF] Hosting environment: Development
+2025-09-30 17:48:40.731 +02:00 [INF] Content root path: D:\repos\WebApiDemo\WebApiDemo
+2025-09-30 17:48:40.749 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5781/_vs/browserLink - 200 null text/javascript; charset=UTF-8 113.7262ms
+2025-09-30 17:48:40.791 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5781/swagger/v1/swagger.json - null null
+2025-09-30 17:48:40.867 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5781/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 76.0552ms
+2025-09-30 17:48:44.895 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5781/DemoApi - application/json 108
+2025-09-30 17:48:44.901 +02:00 [INF] Incoming Request: POST /DemoApi Payload: {
+  "topics": {
+    "reading": 20,
+    "math": 50,
+    "science": 30,
+    "history": 15,
+    "art": 10
+  }
+}
+2025-09-30 17:48:44.913 +02:00 [INF] Executing endpoint 'WebApiDemo.Controllers.DemoApiController.Post (WebApiDemo)'
+2025-09-30 17:48:44.927 +02:00 [INF] Route matched with {action = "Post", controller = "DemoApi"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[WebApiDemo.Models.QuoteResponse] Post(WebApiDemo.Models.TopicsRequest) on controller WebApiDemo.Controllers.DemoApiController (WebApiDemo).
+2025-09-30 17:48:45.055 +02:00 [INF] Computed quotes: {"provider_a":8,"provider_b":5,"provider_c":10}
+2025-09-30 17:48:45.059 +02:00 [INF] Executing OkObjectResult, writing value of type 'WebApiDemo.Models.QuoteResponse'.
+2025-09-30 17:48:45.061 +02:00 [INF] Executed action WebApiDemo.Controllers.DemoApiController.Post (WebApiDemo) in 131.6406ms
+2025-09-30 17:48:45.061 +02:00 [INF] Executed endpoint 'WebApiDemo.Controllers.DemoApiController.Post (WebApiDemo)'
+2025-09-30 17:48:46.895 +02:00 [INF] Response: 200 Payload: {"quotes":{"provider_a":8,"provider_b":5,"provider_c":10}}
+2025-09-30 17:48:46.896 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5781/DemoApi - 200 null application/json; charset=utf-8 2001.3417ms

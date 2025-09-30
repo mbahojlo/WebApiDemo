@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Http;
 using WebApiDemo.Services;
 using WebApiDemo.Models;
 
-
 public class QuoteServiceTests
 {
     private readonly Mock<IWebHostEnvironment> _envMock;
@@ -24,7 +23,7 @@ public class QuoteServiceTests
         Directory.CreateDirectory(_configDir);
         _configPath = Path.Combine(_configDir, "config.json");
         _envMock.Setup(e => e.ContentRootPath).Returns(_configDir);
-    }Middleware
+    }
 
     private void WriteConfig(Dictionary<string, string> providerTopics)
     {
@@ -57,8 +56,6 @@ public class QuoteServiceTests
 
         var result = service.CalculateQuotes(request);
 
-        // ProviderA matches topic1 and topic2: (100+50)*0.10 = 15.0
-        // ProviderB matches topic2 and topic3: (50+30)*0.10 = 8.0
         Assert.Equal(2, result.Quotes.Count);
         Assert.Equal(15.0, result.Quotes["ProviderA"]);
         Assert.Equal(8.0, result.Quotes["ProviderB"]);
@@ -125,7 +122,6 @@ public class QuoteServiceTests
         };
 
         var result = service.CalculateQuotes(request);
-        // topic1 is rank 0, so quote = 0.20 * 100 = 20.0
         Assert.Single(result.Quotes);
         Assert.Equal(20.0, result.Quotes["ProviderA"]);
     }
@@ -133,7 +129,6 @@ public class QuoteServiceTests
     [Fact]
     public void Constructor_ThrowsFileNotFoundException_WhenConfigMissing()
     {
-        // Remove config directory if exists
         var configDir = Path.Combine(_configDir, "config");
         if (Directory.Exists(configDir))
             Directory.Delete(configDir, true);
@@ -155,7 +150,6 @@ public class QuoteServiceTests
 
         var service = new QuoteService(_envMock.Object, _httpContextAccessorMock.Object, _loggerMock.Object);
 
-        // Use reflection to access _providers
         var providersField = typeof(QuoteService).GetField("_providers", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
         var providers = (Dictionary<string, List<string>>)providersField.GetValue(service);
 
